@@ -141,7 +141,7 @@ function cardHeading(item, type) {
 
 function deviceCard(device) {
     const values = device.state;
-    const card = node("article", `card${device.type === "light" && values.onoff === true ? " light-on" : ""}`);
+    const card = node("article", `card${values.onoff === true ? " is-on" : values.onoff === false ? " is-off" : ""}`);
     const heading = cardHeading(device, device.type);
     const alarms = Object.entries(values).filter(([key, value]) =>
         key.startsWith("alarm_") && !["alarm_motion", "alarm_contact"].includes(key) && value === true
