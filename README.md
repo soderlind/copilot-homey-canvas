@@ -48,6 +48,30 @@ The canvas fetches an initial snapshot. Use **Refresh** to fetch an updated view
 
 The renderer listens only on loopback. The extension keeps device snapshots in memory rather than writing them to disk. Commands are not automatically retried; if one fails or times out, refresh and check the current state before trying again.
 
+## Managing Flows with Copilot chat
+
+Use the Copilot conversation to ask Homey MCP to inspect, create, or update Flows. This chat-based authoring is separate from the canvas's **Run Flow** buttons, which start an existing Flow after confirmation. Available trigger, condition, and action cards depend on the apps and devices installed in your Homey. Ask for suggestions without changes when exploring; creating, updating, enabling, or starting a Flow can have effects, so review the proposed changes and explicitly confirm before Copilot applies them. An enabled Flow runs automatically when its trigger matches.
+
+For example, ask for a read-only plan first:
+
+> Review the available Homey Flow trigger, condition, and action cards. Suggest a disabled Flow for my fictional “Reading corner lamp” that I could run at sunset. Do not create or change anything.
+
+When you are ready to create it, start disabled so you can inspect it before enabling:
+
+> Prepare a standard Flow named “Demo reading light at sunset” for the fictional “Reading corner lamp”. First inspect the available sunset trigger and light action cards and their required arguments. Show me the proposed trigger, conditions, and actions, with `enabled` set to false, and wait for my confirmation before creating it. Do not enable or run it.
+
+Ask for a narrowly scoped edit and tell Copilot to preserve unrelated settings:
+
+> Update only the action in “Demo reading light at sunset” so it sets the fictional “Reading corner lamp” to 40% brightness. Read the current Flow first and preserve its name, enabled state, trigger, conditions, and all other settings. Show me the proposed change and wait for confirmation before updating.
+
+You can reversibly disable an exact Flow instead of deleting it:
+
+> Find the exact Homey Flow named “Demo reading light at sunset”. Show me its current enabled state, then ask for confirmation before updating only `enabled` to false. Preserve every other setting and do not run the Flow.
+
+Homey MCP does not provide a Flow deletion tool, so Copilot cannot directly delete Flows. To remove one, ask for guidance and perform the deletion yourself in Homey's own app; do not treat disabling a Flow as deletion:
+
+> Help me delete the exact Flow named “Demo reading light at sunset” in Homey's app. First help me identify the right Flow and explain what may depend on it. Do not change or disable anything; guide me while I remove it manually.
+
 ## Troubleshooting
 
 | Symptom | What to check |
