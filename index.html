@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Homey</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%230969da' stroke-width='3'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./app.js"></script>
+</head>
+<body>
+    <main>
+        <header class="header">
+            <div class="brand">
+                <span class="homey-mark" aria-hidden="true"></span>
+                <div><p class="eyebrow">HOMEY</p><h1>Your home, at a glance.</h1></div>
+            </div>
+            <button id="refresh" class="button secondary" type="button">Refresh</button>
+        </header>
+        <div class="connection-line" role="status">
+            <span id="connection-dot" class="dot"></span>
+            <span id="connection">Connecting to Homey</span>
+            <span id="updated" class="muted">No snapshot yet</span>
+        </div>
+        <div id="errors" class="error-box" role="alert" hidden></div>
+        <div id="notice" class="notice" role="status" hidden></div>
+        <section id="summary" class="summary" aria-label="Home overview"></section>
+        <nav class="tabs" aria-label="Dashboard views">
+            <button type="button" class="tab selected" data-tab="devices" aria-pressed="true">Devices <span id="count-devices">0</span></button>
+            <button type="button" class="tab" data-tab="flows" aria-pressed="false">Flows <span id="count-flows">0</span></button>
+            <button type="button" class="tab" data-tab="moods" aria-pressed="false">Moods <span id="count-moods">0</span></button>
+        </nav>
+        <div class="filters">
+            <label class="search-label"><span class="sr-only">Search devices, Flows, or Moods</span><input id="search" type="search" placeholder="Search your home..." autocomplete="off"></label>
+            <label id="zone-label"><span class="sr-only">Filter by room</span><select id="zone"><option value="">All rooms</option></select></label>
+        </div>
+        <section id="content" aria-label="Devices" aria-busy="false"><p class="empty">Loading your home...</p></section>
+        <footer>
+            <p>Snapshots from your Homey MCP connection. Refresh to see changes made elsewhere.</p>
+            <details><summary>About controls &amp; connection</summary>
+                <p>Only lights have direct controls. Other devices are status-only. Flows and Moods always ask for confirmation; Flows can affect alarms or other equipment.</p>
+                <p>Requests use Copilot's normal tool permissions and your existing Homey sign-in. No API keys or device snapshots are stored on disk by this extension.</p>
+                <p>If Homey reports an authentication error, open <strong>Customize &gt; Installed &gt; homey &gt; Sign in</strong>, then refresh. No action is retried automatically.</p>
+            </details>
+        </footer>
+    </main>
+    <dialog id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-description">
+        <h2 id="confirm-title"></h2>
+        <p id="confirm-description"></p>
+        <div class="dialog-actions">
+            <button id="confirm-cancel" class="button secondary" type="button" autofocus>Cancel</button>
+            <button id="confirm-run" class="button primary" type="button">Confirm</button>
+        </div>
+    </dialog>
+</body>
+</html>
