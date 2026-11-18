@@ -323,9 +323,11 @@ function render() {
     const activeAlerts = devices.filter((device) => Object.entries(device.state).some(([key, value]) =>
         key.startsWith("alarm_") && !["alarm_motion", "alarm_contact"].includes(key) && value === true
     )).length;
+    const turnedOn = devices.filter((device) => device.state.onoff === true);
+    const lightsOn = turnedOn.filter((device) => device.type === "light").length;
     const stats = [
         [devices.length, "Devices", false],
-        [devices.filter((device) => device.type === "light" && device.state.onoff === true).length, "Lights on", false],
+        [turnedOn.length, `Turned on \u00b7 ${lightsOn} light${lightsOn === 1 ? "" : "s"}`, false],
         [activeAlerts, "Devices with alerts", activeAlerts > 0],
         [devices.filter((device) => typeof device.state.measure_battery === "number" && device.state.measure_battery <= 20).length, "Low batteries", false],
     ];
