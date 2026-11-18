@@ -1,6 +1,6 @@
 # Homey Dashboard for GitHub Copilot
 
-[Prerequisites](#prerequisites) · [Installation](#installation) · [Using the dashboard](#using-the-dashboard) · [Managing Flows with Copilot chat](#managing-flows-with-copilot-chat) · [Troubleshooting](#troubleshooting) · [Local tests](#local-tests) · [License](#license)
+[Prerequisites](#prerequisites) · [Installation](#installation) · [Using the dashboard](#using-the-dashboard) · [Managing Flows with Copilot chat](#managing-flows-with-copilot-chat) · [FAQ](#faq) · [Troubleshooting](#troubleshooting) · [Local tests](#local-tests) · [License](#license)
 
 A user-scoped canvas for the GitHub Copilot desktop app. It uses Homey's Model Context Protocol (MCP) server to show your devices by room and give you quick access to lights, Flows, and Moods.
 
@@ -73,6 +73,12 @@ You can reversibly disable an exact Flow instead of deleting it:
 Homey MCP does not provide a Flow deletion tool, so Copilot cannot directly delete Flows. To remove one, ask for guidance and perform the deletion yourself in Homey's own app; do not treat disabling a Flow as deletion:
 
 > Help me delete the exact Flow named “Demo reading light at sunset” in Homey's app. First help me identify the right Flow and explain what may depend on it. Do not change or disable anything; guide me while I remove it manually.
+
+## FAQ
+
+### Should I open more than one Homey canvas?
+
+For the simplest setup, keep one Homey canvas open and reuse that panel instead of opening duplicates. This is a precaution, not a technical limit or a proven fix for sign-in problems; multiple canvas panels and multiple MCP clients are separate things. If Homey reports an expired access token, sign in again under **Customize > Installed > homey > Sign in**. Opening only one canvas does not itself renew an expired token.
 
 ## Troubleshooting
 
