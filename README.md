@@ -1,5 +1,7 @@
 # Homey Dashboard for GitHub Copilot
 
+[Prerequisites](#prerequisites) · [Installation](#installation) · [Using the dashboard](#using-the-dashboard) · [Managing Flows with Copilot chat](#managing-flows-with-copilot-chat) · [Troubleshooting](#troubleshooting) · [Local tests](#local-tests) · [License](#license)
+
 A user-scoped canvas for the GitHub Copilot desktop app. It uses Homey's Model Context Protocol (MCP) server to show your devices by room and give you quick access to lights, Flows, and Moods.
 
 - Browse room and device snapshots, including device readings where available.
