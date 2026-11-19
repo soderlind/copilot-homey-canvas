@@ -80,6 +80,12 @@ Homey MCP does not provide a Flow deletion tool, so Copilot cannot directly dele
 
 For the simplest setup, keep one Homey canvas open and reuse that panel instead of opening duplicates. This is a precaution, not a technical limit or a proven fix for sign-in problems; multiple canvas panels and multiple MCP clients are separate things. If Homey reports an expired access token, sign in again under **Customize > Installed > homey > Sign in**. Opening only one canvas does not itself renew an expired token.
 
+### What if "The access token provided has expired" keeps recurring?
+
+Automatic renewal was not observed in one Copilot/Homey setup. A separate check using a dummy invalid token returned an MCP tool error with HTTP 200 instead of 401, which may affect automatic authentication recovery. The [MCP token-handling specification](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#token-handling) requires HTTP 401 for invalid or expired tokens. The HTTP response for the actual expired token was not captured, so the complete expiry and refresh cause remains unconfirmed.
+
+As a workaround, choose **Customize > Installed > homey > Sign in**, then **Refresh** in the existing canvas. Reopening or reloading the canvas alone does not renew credentials.
+
 ## Troubleshooting
 
 | Symptom | What to check |
