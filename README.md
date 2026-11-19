@@ -1,6 +1,6 @@
 # Homey Dashboard for GitHub Copilot
 
-[Prerequisites](#prerequisites) · [Installation](#installation) · [Using the dashboard](#using-the-dashboard) · [Managing Flows with Copilot chat](#managing-flows-with-copilot-chat) · [FAQ](#faq) · [Troubleshooting](#troubleshooting) · [Local tests](#local-tests) · [License](#license)
+[Prerequisites](#prerequisites) · [Installation](#installation) · [Using the dashboard](#using-the-dashboard) · [Managing Flows with Copilot chat](#managing-flows-with-copilot-chat) · [FAQ](#faq) · [Troubleshooting](#troubleshooting) · [Local tests](#local-tests) · [License](#license) · [AI contribution attribution](#ai-contribution-attribution)
 
 A user-scoped canvas for the GitHub Copilot desktop app. It uses Homey's Model Context Protocol (MCP) server to show your devices by room and give you quick access to lights, Flows, and Moods.
 
@@ -108,3 +108,13 @@ The tests use fixtures and do not require a live Homey connection.
 ## License
 
 [MIT](LICENSE)
+
+## AI contribution attribution
+
+When AI tools contribute to development, include an attribution tag in the contribution:
+
+```text
+Assisted-by: AGENT_NAME:MODEL_VERSION [TOOL1] [TOOL2]
+```
+
+Use the AI tool or framework name and the model version, followed optionally by specialized analysis tools. Do not list basic development tools such as Git, compilers, build tools, or editors. If Auto routing does not expose the model version, note that it is unavailable rather than guessing it.
